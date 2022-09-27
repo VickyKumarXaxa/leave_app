@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+    <center>
+      <table class="key-value-table">
+        <tbody>
+            <br>
+            <br>
+            <tr>
+                <th>Username : </th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <br>
+            <tr>
+                <th class="width-20">Name : </th>
+                <td>{{ user.name }}</td>
+            </tr>
+            <br>
+            <tr>
+                <th>Faculty/Staff : </th>
+                <td>{{ user.faculty_staff }}</td>
+            </tr>
+            <br>
+            <tr>
+                <th>Role : </th>
+                <td>{{ user.roles[0] }}</td>
+            </tr>
+            <br>
+            <tr>
+                <th>Designation : </th>
+                <td>{{ user.designation }}</td>
+            </tr>
+            <br>
+            <tr>
+                <th>Department : </th>
+                <td>{{ user.department }}</td>
+            </tr>
+            <br>
+            <tr>
+                <th>Email : </th>
+                <td>{{ user.email_address }}</td>
+            </tr>
+            
+        </tbody>
+      </table>
+      <br>
+      <br>
+
+      <div>
+            <form method="POST" class="form-signin" style="color:white; width: fit-content; display: inline-block; height: auto;" >
+            {{ form.hidden_tag() }}
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+    
+            </form>     
+            <a class="btn btn-primary" href="" style="display: inline-block; height: auto;">Edit</a>
+        </div>
+    
+    </center>
+</body>
+
+{% endblock %}

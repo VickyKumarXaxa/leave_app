@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a class="btn btn-primary" href="{{ url_for('leave_category_page',role='HOD',user_name=current_user.username) }}">Apply for new Leave</a>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<body>
+    
+    <center><h4>New Leave Requests</h4></center>
+    <br>
+<table class="table table-hover table-dark">
+  <thead>
+      <tr>
+          <!-- Your Columns HERE -->
+          <th scope="col">Applied On</th>
+          <th scope="col">Applied At</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">No of Days</th>
+          <th scope="col">Type</th>
+          <th scope="col">Nature of Leave</th>
+          <!-- <th scope="col">Status</th> -->
+          <th scope="col">Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <!-- Your rows inside the table HERE: -->
+      {% for entry in new_leave_requests %}
+          <tr>
+              <td>{{ entry.Leave.applied_date }}</td>
+              <td>{{ entry.Leave.applied_time }}</td>
+              <td>{{ entry.Leave.start_date }}</td>
+              <td>{{ entry.Leave.end_date }}</td>
+              <td>{{ entry.Leave.no_of_days }}</td>
+              <td>{{ entry.Leave.leave_category }}</td>
+              <td>{{ entry.Leave.nature_of_leave }}</td>
+              <!-- {% if entry.ProcessedLeave.status=='Approved' or entry.ProcessedLeave.status=='Rejected' %}
+                <td>{{ entry.ProcessedLeave.status }}</td>    
+              {% else %}
+                <td>Pending</td> 
+              {% endif %} -->
+              <td>
+                <a class="btn btn-primary" href="{{ url_for('requested_leave_page', role = 'Administration', leave_id = entry.Leave.id, user_name=current_user.username, request_type = 'Approve') }}">View</a>
+              </td>
+          </tr>
+      {% endfor %}
+  </tbody>
+</table>
+<br>
+<br>
+<br>
+<center><h4>All Leave Requests</h4></center>
+<form method="POST" class="form-register" style="color: white; width: fit-content;" >
+  {{ form.hidden_tag() }}
+  <br>
+
+  {{ form.select_by.label() }}
+  {{ form.select_by(class="form-control",placeholder="") }}
+  {{ form.sort_by.label() }}
+  {{ form.sort_by(class="form-control",placeholder="") }}
+  <br>
+  {{form.submit(class="btn-lg btn-block btn-primary")}}
+</form>
+<table class="table table-hover table-dark">
+  <thead>
+      <tr>
+          <!-- Your Columns HERE -->
+          <th scope="col">Applied On</th>
+          <th scope="col">Applied At</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">No of Days</th>
+          <th scope="col">Type</th>
+          <th scope="col">Nature of Leave</th>
+          <!-- <th scope="col">Status</th> -->
+          <th scope="col">Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <!-- Your rows inside the table HERE: -->
+      {% for entry in leave_requests %}
+          <tr>
+              <td>{{ entry.Leave.applied_date }}</td>
+              <td>{{ entry.Leave.applied_time }}</td>
+              <td>{{ entry.Leave.start_date }}</td>
+              <td>{{ entry.Leave.end_date }}</td>
+              <td>{{ entry.Leave.no_of_days }}</td>
+              <td>{{ entry.Leave.leave_category }}</td>
+              <td>{{ entry.Leave.nature_of_leave }}</td>
+              <!-- {% if entry.ProcessedLeave.status=='Approved' or entry.ProcessedLeave.status=='Rejected' %}
+                <td>{{ entry.ProcessedLeave.status }}</td>    
+              {% else %}
+                <td>Pending</td> 
+              {% endif %} -->
+              <td>
+                <a class="btn btn-primary" href="{{ url_for('requested_leave_page', role = 'Administration', leave_id = entry.Leave.id, user_name=current_user.username, request_type = 'Approve') }}">View</a>
+              </td>
+          </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</body>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<body class="text-center">
+    <div class="container">
+        <form method="POST" class="form-register" style="color: white;">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 font-weight-normal">
+                Enter email address of User to be deleted
+            </h1>
+            <br>
+
+            {{ form.email.label() }}
+            {{ form.email(class="form-control",placeholder="Email Address") }}
+
+            
+            <br>
+            {{form.submit(class="btn-lg btn-block btn-primary")}}
+        </form>
+    </div>
+</body>
+{% endblock %}

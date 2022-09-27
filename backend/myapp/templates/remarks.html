@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body class="text-center">
+    <div class="container">
+        <form method="POST" class="form-register" style="color: white;">
+            {{ form.hidden_tag() }}
+            <br>
+
+            {{ form.remarks.label() }}
+            {{ form.remarks(class="form-control",placeholder="") }}
+
+            
+            <br>
+            {{form.submit(class="btn-lg btn-block btn-primary")}}
+        </form>
+    </div>
+</body>
+{% endblock %}

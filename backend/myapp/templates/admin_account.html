@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    <center>
+        <br>
+        <br>
+        <h4>Admin Page</h4>
+        <br>
+        <a class="btn btn-primary" href="{{ url_for('add_user_page', user_name=current_user.username) }}">Add User</a>
+        <br>
+        <br>
+        <a class="btn btn-primary" href="{{ url_for('all_users_page', user_name=current_user.username) }}">Users</a>
+    </center>
+</body>
+{% endblock %}

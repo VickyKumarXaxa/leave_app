@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+    <center>
+      <a>Leave Application {{ status }} Successfully!</a>
+      <table class="key-value-table">
+        <tbody>
+            <br>
+            <br>
+            <tr>
+                <th class="width-20">Name : </th>
+                <td>{{ applicant.name }}</td>
+            </tr>
+            <tr>
+                <th>Designation : </th>
+                <td>{{ applicant.designation }}</td>
+            </tr>
+            <tr>
+                <th>Department : </th>
+                <td>{{ applicant.department }}</td>
+            </tr>
+            <tr>
+                <th>Nature of Leave : </th>
+                <td>{{ leave_applied.nature_of_leave }}</td>
+            </tr>
+            <tr>
+              <th>Leave Category : </th>
+              <td>{{ leave_applied.leave_category }}</td>
+            </tr>
+            <tr>
+              <th>Start Date : </th>
+              <td>{{ leave_applied.start_date }}</td>
+            </tr>
+            <tr>
+              <th>End Date : </th>
+              <td>{{ leave_applied.end_date }}</td>
+            </tr>
+            <tr>
+              <th>Number of Days : </th>
+              <td>{{ leave_applied.no_of_days }}</td>
+            </tr>
+            <tr>
+              <th>Pusrpose of Leave : </th>
+              <td>{{ leave_applied.purpose_of_leave }}</td>
+            </tr>
+            <tr>
+              <th>Alternative arrangements(if any) : </th>
+              <td>{{ leave_applied.alternative_arrangements }}</td>
+            </tr>
+            <tr>
+              <th>Station leave Required : </th>
+              <td>{{ leave_applied.station_leave_required }}</td>
+            </tr>
+            <tr>
+              <th>SL start date : </th>
+              <td>{{ leave_applied.sl_start_date }}</td>
+            </tr>
+            <tr>
+              <th>SL end date : </th>
+              <td>{{ leave_applied.sl_end_date }}</td>
+            </tr>
+            <tr>
+              <th>Address during Leave : </th>
+              <td>{{ leave_applied.address_during_leave }}</td>
+            </tr>
+            <tr>
+              <th>Phone Number : </th>
+              <td>{{ leave_applied.phone_number }}</td>
+            </tr>
+            <br>
+            <tr>
+                <th>Status : </th>
+                <td>{{ status }}</td>
+            </tr>
+        </tbody>
+      </table>
+      <br>
+      {% if current_user.roles[0].name == 'HOD' %}
+        <a class="btn btn-primary" href="">Print</a>     <a class="btn btn-primary" href="{{ url_for('leave_request_page_hod',user_name=current_user.username) }}">Return to Leave Requests</a>
+      {% elif current_user.roles[0].name == 'Authority' %}
+        <a class="btn btn-primary" href="">Print</a>     <a class="btn btn-primary" href="{{ url_for('leave_request_page_authority',user_name=current_user.username) }}">Return to Leave Requests</a>
+      {% elif current_user.roles[0].name == 'Administration' %}
+      <a class="btn btn-primary" href="">Print</a>     <a class="btn btn-primary" href="{{ url_for('leave_request_page_administration',user_name=current_user.username) }}">Return to Leave Requests</a>
+      {% endif %}
+    </center>
+</body>
+
+{% endblock %}
